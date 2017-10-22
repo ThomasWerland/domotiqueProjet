@@ -7,15 +7,34 @@
     <title>${title}</title>
 </head>
 <body>
-    <form:button
-        id="login"
-        method ="POST"
-        action="/domotique/login/send"
-        modelAttribute="log">
-            <form:label path="login">Login</form:label>
-            <form:input path="login"/>
-        <form:button path="login"/>
-    </form:form>
+    <div class ="container login">
+        <div class="row">
+
+
+            <article class="col-xs-12 col-md-4 ">
+                <form:form
+                        id="login"
+                        method ="POST"
+                        action="/domotique/login/send"
+                        modelAttribute="log">
+                    <form:label path="login">Login</form:label>
+                    <form:input path="login"/>
+                    <br></br>
+                    <form:label path="pw">Mot de passe</form:label>
+                    <form:input path="pw"/>
+                    <br></br>
+                    <form:button path="name">Connexion</form:button>
+                </form:form>
+                <a href="http://localhost:8082/domotique/register">Vous n'avez pas encore de compte?</a>
+            </article>
+
+
+        </div>
+    </div>
+
+
+
+
 
 
 

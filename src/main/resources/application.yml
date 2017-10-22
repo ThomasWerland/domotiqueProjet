@@ -1,3 +1,8 @@
 server:
   port: 8082
   contextPath: /domotique
+
+spring:
+  datasource:
+    password: Victoire16
+    url: jdbc:mysql://localhost:3306/domotique?user=Thomas

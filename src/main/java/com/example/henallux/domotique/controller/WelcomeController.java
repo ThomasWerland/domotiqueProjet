@@ -1,6 +1,7 @@
 package com.example.henallux.domotique.controller;
 
 
+import com.example.henallux.domotique.model.Register;
 import com.example.henallux.domotique.model.UtilLogin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +21,14 @@ public class WelcomeController {
 
     @RequestMapping(value="/send", method =RequestMethod.POST)
     public String getFormData(@ModelAttribute(value="log") UtilLogin form){
-        return form.getLogin();
+
+
+        System.out.println(form.getPw());
+        return "redirect:inscription";
+
+
+
+
     }
 
 
