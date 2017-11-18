@@ -1,8 +1,6 @@
 package com.example.henallux.domotique.controller;
 
 
-import com.example.henallux.domotique.dataAccess.dao.UserDAO;
-import com.example.henallux.domotique.dataAccess.entity.UserEntity;
 import com.example.henallux.domotique.dataAccess.util.ProviderConverter;
 import com.example.henallux.domotique.model.Register;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import sun.misc.Request;
 
 import java.util.ArrayList;
 

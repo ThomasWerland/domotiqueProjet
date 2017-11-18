@@ -1,6 +1,8 @@
 package com.example.henallux.domotique.dataAccess.util;
 
+import com.example.henallux.domotique.dataAccess.entity.CategoryEntity;
 import com.example.henallux.domotique.dataAccess.entity.UserEntity;
+import com.example.henallux.domotique.model.CategoryModel;
 import com.example.henallux.domotique.model.Register;
 
 public class ProviderConverter {
@@ -10,31 +12,15 @@ public class ProviderConverter {
 
     }
 
-    public UserEntity userModelToUserEntity(Register register){
-        UserEntity userEntity = new UserEntity();
-        userEntity.setAdress(register.getAdress());
-        userEntity.setAdressNum(register.getAdressNumber());
-        userEntity.setCountry(register.getCountry());
-        userEntity.setEmailAdress(register.getEmailAdress());
-        userEntity.setName(register.getName());
-        userEntity.setPhoneNumber(register.getPhoneNumber());
-        userEntity.setPostalCode(register.getPostalCode());
-        userEntity.setSirname(register.getSirname());
-        userEntity.setTown(register.getTown());
-        return userEntity;
+    public CategoryEntity CategoryModelToCategoryEntity(CategoryModel categoryModel){
+            CategoryEntity categoryEntity = new CategoryEntity();
+            categoryEntity.setId(categoryModel.getId());
+            return categoryEntity;
     }
 
-    public Register userEntityToRegister(UserEntity userEntity){
-        Register register = new Register();
-        register.setAdress(userEntity.getAdress());
-        register.setAdressNumber(userEntity.getAdressNum());
-        register.setCountry(userEntity.getCountry());
-        register.setEmailAdress(userEntity.getEmailAdress());
-        register.setName(userEntity.getName());
-        register.setPhoneNumber(userEntity.getPhoneNumber());
-        register.setPostalCode(userEntity.getPostalCode());
-        register.setSirname(userEntity.getSirname());
-        register.setTown(userEntity.getTown());
-        return register;
+    public CategoryModel categoryEntityToCategoryModel(CategoryEntity categoryEntity){
+        CategoryModel categoryModel = new CategoryModel();
+        categoryModel.setId(categoryEntity.getId());
+        return categoryModel;
     }
 }
