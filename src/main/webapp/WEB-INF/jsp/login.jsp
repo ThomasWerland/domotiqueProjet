@@ -15,15 +15,15 @@
                 <form:form
                         id="login"
                         method ="POST"
-                        action="/domotique/login/send"
+                        action="/domotique/login"
                         modelAttribute="log">
-                    <form:label path="login">Login</form:label>
-                    <form:input path="login"/>
+                    <form:label path="username">Login</form:label>
+                    <form:input path="username"/>
                     <br></br>
-                    <form:label path="pw">Mot de passe</form:label>
-                    <form:input path="pw"/>
+                    <form:label path="password">Mot de passe</form:label>
+                    <form:input path="password"/>
                     <br></br>
-                    <form:button path="name">Connexion</form:button>
+                    <form:button path="">Connexion</form:button>
                 </form:form>
                 <a href="http://localhost:8082/domotique/register">Vous n'avez pas encore de compte?</a>
             </article>

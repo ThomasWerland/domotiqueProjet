@@ -1,125 +1,220 @@
 package com.example.henallux.domotique.dataAccess.entity;
 
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-@Entity
-@Table(name="user")
-public class UserEntity {
+import static org.springframework.util.StringUtils.isEmpty;
+
+
+@Entity(name="PERSISTABLE_USER")
+public class UserEntity implements UserDetails {
 
     @Id
-    @Column(name="emailAdresse")
-    private String emailAdress;
+    @Column(name = "USERNAME")
+    private String username;
 
-    @Column(name = "name")
+    @Column(name = "PASSWORD")
+    private String password;
+
+    @Column(name = "AUTHORITIES")
+    private String authorities;
+
+    @Column(name = "NON_EXPIRED")
+    private Boolean accountNonExpired;
+
+    @Column(name = "NON_LOCKED")
+    private Boolean accountNonLocked;
+
+    @Column(name = "CREDENTIALS_NON_EXPIRED")
+    private Boolean credentialsNonExpired;
+
+    @Column(name = "ENABLED")
+    private Boolean enabled;
+
+    @Column(name = "NAME")
     private String name;
 
-    @Column(name="sirname")
+    @Column(name = "FIRSTNAME")
+    private String firstname;
 
-    private String sirname;
+    @Column(name = "STREET")
+    private String street;
 
-    @Column(name ="adress")
+    @Column(name = "STREETNUMBER")
+    private Integer streetNumber;
 
-    private String adress;
+    @Column(name = "POSTALCODE")
+    private Integer postalCode;
 
-    @Column(name="adressNumber")
+    @Column(name = "CITY")
+    private String city;
 
-    private int adressNum;
-
-    @Column(name ="town")
-
-    private String town;
-
-    @Column(name="postalCode")
-
-    private int postalCode;
-
-    @Column(name = "country")
-
+    @Column(name = "COUNTRY")
     private String country;
 
-    @Column(name = "phoneNumber")
+    @Column(name = "PHONENUMBER")
+    private Integer phoneNumber;
 
-    private int phoneNumber;
 
+    @Override
+    public Collection<GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
 
-    public UserEntity(){
+        if(!isEmpty(authorities)) {
+            String[] authoritiesAsArray = authorities.split(",");
 
+            for(String authority : authoritiesAsArray) {
+                if(!isEmpty(authority)) {
+                    grantedAuthorities.add(new SimpleGrantedAuthority(authority));
+                }
+            }
+        }
+
+        return grantedAuthorities;
     }
 
+    @Override
+    public String getPassword() {
+        return password;
+    }
 
-    public String getEmailAdress() {
-        return this.emailAdress;
+    @Override
+    public String getUsername() {
+        return username;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
+    public Boolean getAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public void setAccountNonExpired(Boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public Boolean getAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(Boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public Boolean getCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public void setCredentialsNonExpired(Boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public String getSirname() {
-        return this.sirname;
+    public String getFirstname() {
+        return this.firstname;
     }
 
-    public String getAdress() {
-        return this.adress;
+    public String getStreet() {
+        return this.street;
     }
 
-    public int getAdressNum() {
-        return this.adressNum;
+    public Integer getStreetNumber() {
+        return this.streetNumber;
     }
 
-    public String getTown() {
-        return this.town;
-    }
-
-    public int getPostalCode() {
+    public Integer getPostalCode() {
         return this.postalCode;
+    }
+
+    public String getCity() {
+        return this.city;
     }
 
     public String getCountry() {
         return this.country;
     }
 
-    public int getPhoneNumber() {
+    public Integer getPhoneNumber() {
         return this.phoneNumber;
-    }
-
-    public void setEmailAdress(String emailAdress) {
-        this.emailAdress = emailAdress;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setSirname(String sirname) {
-        this.sirname = sirname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
-    public void setAdressNum(int adressNum) {
-        this.adressNum = adressNum;
+    public void setStreetNumber(Integer streetNumber) {
+        this.streetNumber = streetNumber;
     }
 
-    public void setTown(String town) {
-        this.town = town;
-    }
-
-    public void setPostalCode(int postalCode) {
+    public void setPostalCode(Integer postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public void setCountry(String country) {
         this.country = country;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }
